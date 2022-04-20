@@ -7,7 +7,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import {User} from "../mockdata"
+import {User} from "../mockdata";
+import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
+
 
 const UserDetail = () => {
 
@@ -28,6 +30,7 @@ const [search , setSearch] =  useState('')
           <TableRow>
             <TableCell>ID</TableCell>
             <TableCell>User Name</TableCell>
+            <TableCell>Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -38,6 +41,20 @@ const [search , setSearch] =  useState('')
             <TableRow>
               <TableCell>{row.id}</TableCell>
               <TableCell className="tableCell" key = {row.id}>{row.username}</TableCell>
+              <TableCell>
+                    <button
+                      className="editbtn"
+                      title='Edit'
+                    >
+                      <EditOutlined />
+                    </button>
+                    <button
+                      className="deletebtn"
+                      title="Delete"
+                    >
+                      <DeleteOutlined />
+                    </button>
+                  </TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -8,6 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import {AgencyName} from "../mockdata";
+import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
 
 
 const AgencyDetail = () => {
@@ -29,6 +30,7 @@ const [search , setSearch] =  useState('')
           <TableRow>
             <TableCell>ID</TableCell>
             <TableCell>Agency Name</TableCell>
+            <TableCell>Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -38,7 +40,21 @@ const [search , setSearch] =  useState('')
             ).map((row) => (
             <TableRow>
               <TableCell>{row.id}</TableCell>
-              <TableCell className="tableCell" key = {row.id}>{row.agencyname}</TableCell>
+              <TableCell className = "tableCell" key = {row.id}>{row.agencyname}</TableCell>
+              <TableCell>
+                    <button
+                      className="editbtn"
+                      title='Edit'
+                    >
+                      <EditOutlined />
+                    </button>
+                    <button
+                      className="deletebtn"
+                      title="Delete"
+                    >
+                      <DeleteOutlined />
+                    </button>
+                  </TableCell>
             </TableRow>
           ))}
         </TableBody>
