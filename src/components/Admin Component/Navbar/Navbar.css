@@ -1,62 +1,55 @@
-.navbar{
-    width: 100%;
-    height: 50px;
-    background-color: white;
-    position: sticky;
-    top: 0;
-    z-index: 999;
+.navbar {
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
-.navbarWrapper{
-    height: 100%;
-    padding: 0px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.navbarWrapper {
+  height: 100%;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.navright{
-    display: flex;
-    align-items: center;
+.navright {
+  display: flex;
+  align-items: center;
+}
+.navbarIconContainer {
+  position: relative;
+  cursor: pointer;
+  margin-right: 20px;
+  color: #555;
 }
 
-.navbarIconContainer{
-    position: relative;
-    cursor: pointer;
-    margin-right: 20px;
-    color: #555;
+.navbarBadge {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: -5px;
+  right: 0px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+.navbarAvater {
+  width: 130px;
+  height: 50px;
+  border-radius: 0%;
+  cursor: pointer;
 }
 
-.navbarIconContainer:hover {
-        background-color: #fb9e00;
-        border-radius: 50px;
-        transition: 0.2s ease-in-out;
-    }
-
-.navbarBadge{
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    top: -5px;
-    right: 0px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-}
-.navbarAvater{
-    width: 130px;
-    height: 50px;
-    border-radius: 0%;
-    cursor: pointer;
-}
-
-.navAvater{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
+.navAvater {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
 }
