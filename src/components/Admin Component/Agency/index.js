@@ -9,19 +9,42 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import {AgencyName} from "../mockdata";
 import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
+import SearchBar from "material-ui-search-bar";
 
 
 const AgencyDetail = () => {
 
-const [search , setSearch] =  useState('')
+  const [rows, setRows] = useState(AgencyName);
+  const [searched, setSearched] = useState("");
+
+  const requestSearch = (searchedVal) => {
+    const filteredRows = AgencyName.filter((row) => {
+      return Object.keys(row).some((agencyname) =>
+        row.agencyname.toLowerCase().includes(searchedVal) ||
+          row.agencyname.toUpperCase().includes(searchedVal)
+
+      );
+    }
+    );
+    setRows(filteredRows);
+  };
+
+  const cancelSearch = () => {
+    setSearched("");
+    requestSearch(searched);
+  };
+
   return (
     <>    
     <div className='home'>
     <div className='listContainer'>
-    <input type = "text" 
-    className='searchbar' 
-    placeholder='Search' 
-    onChange={(e) => setSearch(e.target.value)}/>
+    <SearchBar
+          value={searched}
+        className='searchbar'
+          onChange={(searchVal) => requestSearch(searchVal)}
+          onCancelSearch={() => cancelSearch()}
+        />
+
     <TableContainer component={Paper} 
     className="usertable"
     >
@@ -34,10 +57,7 @@ const [search , setSearch] =  useState('')
           </TableRow>
         </TableHead>
         <TableBody>
-          {AgencyName.filter((row) => 
-          row.agencyname.toLowerCase().includes(search)||
-          row.agencyname.toUpperCase().includes(search)
-            ).map((row) => (
+          {rows.map((row) => (
             <TableRow>
               <TableCell>{row.id}</TableCell>
               <TableCell className = "tableCell" key = {row.id}>{row.agencyname}</TableCell>
