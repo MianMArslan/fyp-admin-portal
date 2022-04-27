@@ -20,10 +20,12 @@
   
 .searchbar {
   width: 40%;
-  margin-bottom: 5%;
+  margin-top: -5%;
   height: 35px;
   border-color: black;
-  margin-left: 30%;
+  margin-left: 5%;
+  display: flex;
+  position: fixed;
 }
 .editbtn {
   background-color: transparent;
