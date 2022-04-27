@@ -3,7 +3,6 @@ import tz from "moment-timezone";
 
 export default function WidgetLg(props) {
   const { rows } = props;
-  console.log(rows);
   const Button = ({ type }) => {
     return <button className={"widgetLgButton " + type}>{type}</button>;
   };

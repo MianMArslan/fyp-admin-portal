@@ -4,13 +4,12 @@ import img1 from "../../images/off the beaten track.png";
 
 export default function WidgetSm(props) {
   const { rows } = props;
-  console.log(rows);
   return (
     <div className="widgetSm">
       <span className="widgetSmTitle">New Join Members</span>
       <ul className="widgetSmList">
         {rows.map((row) => (
-          <li className="widgetSmListItem">
+          <li className="widgetSmListItem" key={row.id}>
             <img src={img1} alt="" className="widgetSmImg" />
             <div className="widgetSmUser">
               <span className="widgetSmUsername">{`${row.firstName} ${row.lastName}`}</span>

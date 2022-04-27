@@ -1,11 +1,5 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import {
-  Box,
-  CircularProgress,
-  Menu,
-  MenuItem,
-  Typography,
-} from "@mui/material";
+import { Box, Menu, MenuItem, Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
@@ -70,6 +64,14 @@ export default function Notifications(props) {
                 />
                 <Typography variant="body2" style={{ marginLeft: "5px" }}>
                   Read
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={() => {}} style={{ padding: "10px" }}>
+                <MarkEmailReadIcon
+                  style={{ fontSize: "18px", color: "grey" }}
+                />
+                <Typography variant="body2" style={{ marginLeft: "5px" }}>
+                  Un Read
                 </Typography>
               </MenuItem>
               <MenuItem onClick={() => {}} style={{ padding: "10px" }}>

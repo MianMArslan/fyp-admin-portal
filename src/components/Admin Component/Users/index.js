@@ -15,7 +15,6 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import VerifiedIcon from "@mui/icons-material/Verified";
 const UserDetail = () => {
   const [rows, setRows] = useState([]);
-  const [record, setRecord] = useState([]);
   const [searched, setSearched] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -30,6 +29,7 @@ const UserDetail = () => {
     }
   }
   const requestSearch = (searchedVal) => {
+    if (!searchedVal) getAllActiveUsers();
     const filteredRows = rows.filter((row) => {
       return Object.keys(row).some(
         (firstName) =>
@@ -42,7 +42,7 @@ const UserDetail = () => {
 
   const cancelSearch = () => {
     setSearched("");
-    requestSearch(searched);
+    getAllActiveUsers();
   };
 
   return (
@@ -80,7 +80,7 @@ const UserDetail = () => {
                         {row.lastName}
                       </TableCell>
                       <TableCell className="tableCell">
-                        {row.isVerified == "email" ? (
+                        {row.isVerified === "email" ? (
                           <VerifiedIcon sx={{ color: "#fb9e00" }} />
                         ) : (
                           <CancelIcon sx={{ color: "red" }} />

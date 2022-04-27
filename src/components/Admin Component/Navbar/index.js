@@ -15,7 +15,6 @@ export default function NavbarAdmin() {
 
   const getNotification = async () => {
     let data = await GET("/admin/notification", { params: { isRead: false } });
-    console.log("🚀 ~ file: index.js ~ line 18 ~ getNotification ~ data", data);
     if (data) {
       setRows(data.rows);
       setCount(data.count);
