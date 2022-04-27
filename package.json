@@ -20,6 +20,7 @@
     "@testing-library/user-event": "^12.8.3",
     "aos": "^2.3.4",
     "axios": "^0.24.0",
+    "const": "^1.0.0",
     "cors": "^2.8.5",
     "material-ui-search-bar": "^1.0.0",
     "moment": "^2.29.3",
