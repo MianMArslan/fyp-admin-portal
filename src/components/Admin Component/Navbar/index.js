@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./Navbar.css";
-import img1 from "../../images/off the beaten track.png";
+import img1 from "../../images/shortLogo.PNG";
 import img2 from "../../images/img4.jpg";
 import Notification from "../../../Notification/index";
 import Badge from "@mui/material/Badge";

@@ -13,10 +13,14 @@ import { GET } from "../../../services/httpClient";
 import ActivityLoader from "../../ActivityLoader/index";
 import CancelIcon from "@mui/icons-material/Cancel";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import Dialog from "../../Dialog/index";
+
 const UserDetail = () => {
   const [rows, setRows] = useState([]);
   const [searched, setSearched] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     getAllActiveUsers();
@@ -43,6 +47,11 @@ const UserDetail = () => {
   const cancelSearch = () => {
     setSearched("");
     getAllActiveUsers();
+  };
+
+  const handleUpdateClick = async (row) => {
+    setData(row);
+    setOpenDialog(true);
   };
 
   return (
@@ -87,7 +96,11 @@ const UserDetail = () => {
                         )}
                       </TableCell>
                       <TableCell>
-                        <button className="editbtn" title="Edit">
+                        <button
+                          className="editbtn"
+                          title="Edit"
+                          onClick={() => handleUpdateClick(row)}
+                        >
                           <EditOutlined />
                         </button>
                         <button className="deletebtn" title="Delete">
@@ -99,6 +112,13 @@ const UserDetail = () => {
               </TableBody>
             </Table>
           </TableContainer>
+          {openDialog && (
+            <Dialog
+              setOpenDialog={setOpenDialog}
+              getRecord={getAllActiveUsers}
+              dialogData={data}
+            />
+          )}
         </div>
       </div>
     </>

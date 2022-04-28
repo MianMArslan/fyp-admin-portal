@@ -10,7 +10,8 @@ import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
 import MarkEmailUnreadIcon from "@mui/icons-material/MarkEmailUnread";
 import RingLoader from "react-spinners/RingLoader";
 import { css } from "@emotion/react";
-
+import { GET, DELETE } from "../services/httpClient";
+import _ from "lodash";
 const override = css`
   display: block;
   margin: 0 auto;
@@ -21,6 +22,8 @@ export default function Notifications(props) {
   const { rows } = props;
   const [progress, setProgress] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [row, setRow] = React.useState(rows);
+
   let [color, setColor] = React.useState("#fb9e00");
 
   const open = Boolean(anchorEl);
@@ -31,6 +34,25 @@ export default function Notifications(props) {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const getNotificationRead = async () => {
+    let data = await GET("/admin/notification", { params: { isRead: true } });
+    if (!_.isEmpty(data.rows)) {
+      setRow(data.rows);
+    } else setRow(null);
+  };
+  const getNotificationUnRead = async () => {
+    let data = await GET("/admin/notification", { params: { isRead: false } });
+    if (!_.isEmpty(data.rows)) {
+      setRow(data.rows);
+    } else setRow(null);
+  };
+  const deleteNotification = async () => {
+    let data = await DELETE("/admin/notification", {
+      params: { receiverId: row[0].receiverId },
+    });
+    if (data) setRow(null);
   };
 
   React.useEffect(() => {
@@ -58,7 +80,13 @@ export default function Notifications(props) {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={() => {}} style={{ padding: "10px" }}>
+              <MenuItem
+                onClick={() => {
+                  getNotificationRead();
+                  setAnchorEl(null);
+                }}
+                style={{ padding: "10px" }}
+              >
                 <MarkEmailReadIcon
                   style={{ fontSize: "18px", color: "grey" }}
                 />
@@ -66,7 +94,13 @@ export default function Notifications(props) {
                   Read
                 </Typography>
               </MenuItem>
-              <MenuItem onClick={() => {}} style={{ padding: "10px" }}>
+              <MenuItem
+                onClick={() => {
+                  getNotificationUnRead();
+                  setAnchorEl(null);
+                }}
+                style={{ padding: "10px" }}
+              >
                 <MarkEmailReadIcon
                   style={{ fontSize: "18px", color: "grey" }}
                 />
@@ -74,7 +108,13 @@ export default function Notifications(props) {
                   Un Read
                 </Typography>
               </MenuItem>
-              <MenuItem onClick={() => {}} style={{ padding: "10px" }}>
+              <MenuItem
+                onClick={() => {
+                  deleteNotification();
+                  setAnchorEl(null);
+                }}
+                style={{ padding: "10px" }}
+              >
                 <MarkEmailUnreadIcon
                   style={{ fontSize: "18px", color: "grey" }}
                 />
@@ -90,9 +130,17 @@ export default function Notifications(props) {
       <CardContent style={{ overflowY: "scroll", height: "250px" }}>
         {progress ? (
           <>
-            {rows.map((row) => (
-              <NotificationCard key={row.id} data={row} />
-            ))}
+            {row ? (
+              row.map((row) => (
+                <NotificationCard
+                  key={row.id}
+                  data={row}
+                  state={getNotificationUnRead}
+                />
+              ))
+            ) : (
+              <div>No Record Found...</div>
+            )}
           </>
         ) : (
           <Box

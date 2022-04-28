@@ -5,14 +5,26 @@ import { red } from "@mui/material/colors";
 import * as React from "react";
 import "./notificationCard.css";
 import tz from "moment-timezone";
-
+import { UPDATE } from "../../services/httpClient";
 export default function NotificationCard(props) {
-  const { data } = props;
+  const { data, state } = props;
+  const updateNotificationStatus = async () => {
+    let record = await UPDATE("/admin/notification", { id: data.id });
+    if (record) await state();
+  };
 
   return (
     <Card
-      style={{ width: "100%", marginBottom: "5px", cursor: "pointer" }}
+      style={{
+        width: "100%",
+        marginBottom: "5px",
+        cursor: "pointer",
+        boxShadow: data.isRead ? "2px 2px green" : "2px 2px red",
+      }}
       elevation={2}
+      onClick={() => {
+        updateNotificationStatus();
+      }}
     >
       <CardHeader
         avatar={
