@@ -12,11 +12,11 @@ import PersonIcon from "@mui/icons-material/Person";
 
 export default function FormDialog(props) {
   const { dialogData, setOpenDialog, getRecord } = props;
+  console.log(dialogData);
   const [open, setOpen] = React.useState(true);
-  const [amount, setAmount] = React.useState(dialogData.amount);
-  const [description, setDescription] = React.useState(dialogData.description);
-  const [discount, setDiscount] = React.useState(dialogData.discount);
-  const [phone, setPhone] = React.useState(dialogData.phone);
+  const [firstName, setFirstName] = React.useState(dialogData.firstName);
+  const [lastName, setLastName] = React.useState(dialogData.lastName);
+  const [email, setEmail] = React.useState(dialogData.email);
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const [type, setType] = React.useState(false);
   const [snackbarMessage, setSnackbarMessage] = React.useState(false);
@@ -68,9 +68,9 @@ export default function FormDialog(props) {
             fullWidth
             type="text"
             variant="standard"
-            value={phone}
+            value={firstName}
             onChange={(e) => {
-              setPhone(e.target.value);
+              setFirstName(e.target.value);
             }}
           />
           <TextField
@@ -81,60 +81,21 @@ export default function FormDialog(props) {
             fullWidth
             type="text"
             variant="standard"
-            value={phone}
+            value={lastName}
             onChange={(e) => {
-              setPhone(e.target.value);
+              setLastName(e.target.value);
             }}
           />
           <TextField
             autoFocus
             margin="dense"
-            id="phone"
-            label="Phone"
+            id="email"
+            label="Email"
             fullWidth
+            disabled
             type="text"
             variant="standard"
-            value={phone}
-            onChange={(e) => {
-              setPhone(e.target.value);
-            }}
-          />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="description"
-            label="Description"
-            fullWidth
-            type="text"
-            variant="standard"
-            value={description}
-            onChange={(e) => {
-              setDescription(e.target.value);
-            }}
-          />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="amount"
-            label="Amount"
-            fullWidth
-            variant="standard"
-            value={amount}
-            onChange={(e) => {
-              setAmount(e.target.value);
-            }}
-          />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="discount"
-            label="Discount"
-            fullWidth
-            variant="standard"
-            value={discount}
-            onChange={(e) => {
-              setDiscount(e.target.value);
-            }}
+            value={email}
           />
         </DialogContent>
         <DialogActions>

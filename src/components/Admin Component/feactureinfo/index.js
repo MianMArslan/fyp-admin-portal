@@ -11,10 +11,12 @@ const FeaturedInfo = () => {
   let [color, setColor] = useState("#fb9e00");
   const [progressTourist, setProgressTourist] = useState(false);
   const [progressAgency, setProgressAgency] = useState(false);
+  const [booking, setBooking] = useState("");
 
   useEffect(() => {
     getTouristCount();
     getAgencyCount();
+    getAllBooking();
   }, []);
 
   async function getTouristCount() {
@@ -30,6 +32,15 @@ const FeaturedInfo = () => {
       setProgressAgency(true);
       setACount(res);
     }, 3500);
+  }
+  async function getAllBooking() {
+    let res = await GET("/admin/booking");
+    if (res) {
+      setTimeout(() => {
+        setProgressAgency(true);
+        setBooking(res);
+      }, 3500);
+    }
   }
   return (
     <div className="featured">
@@ -78,9 +89,25 @@ const FeaturedInfo = () => {
         </div>
       </div>
       <div className="featuredItem">
-        <span className="featuredTitle">Total Add Booked</span>
+        <span className="featuredTitle">Total Booking</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">$2,225</span>
+          <span className="featuredMoney">
+            {progressTourist ? (
+              <CountUp end={booking} duration={1.5} />
+            ) : (
+              <Box
+                style={{
+                  height: "100%",
+                  width: "100",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <RingLoader color={color} loading={!progressTourist} />
+              </Box>
+            )}
+          </span>
         </div>
       </div>
     </div>
