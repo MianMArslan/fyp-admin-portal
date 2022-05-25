@@ -1,71 +1,105 @@
-export const User = [
+export const Contactdetail = [
     {
         id : 1,
-        username: "Manahil"
+        name: "Manahil",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your website."
     },
     {
         id : 2,
-        username: "Adan"
+        name: "Adan",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your website."
     },
     {
         id : 3,
-        username: "Warda"
+        name: "Warda",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your website."
     },
     {
         id : 4,
-        username: "Abdullah"
+        name: "Abdullah",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your website."
     },
     {
         id : 5,
-        username: "Zaid"
+        name: "Zaid",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your website."
     },
     {
         id : 6,
-        username: "Zain"
+        name: "Zain",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your website."
     },
     {
         id : 7,
-        username: "Arhum"
+        name: "Arhum",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your website."
     },
     {
         id : 8,
-        username: "Eshmal"
+        name: "Eshmal",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your website."
     },
     {
         id : 9,
-        username: "Ashmal"
+        name: "Ashmal",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your website."
     },
     {
         id : 10,
-        username: "Areesh"
+        name: "Areesh",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your website."
     },
     {
         id : 11,
-        username: "Zirwah"
+        name: "Zirwah",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your website."
     },
     {
         id : 12,
-        username: "Moosa"
+        name: "Moosa",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your website."
     },
     {
         id : 13,
-        username: "Shoaib"
+        name: "Shoaib",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your website."
     },
     {
         id : 14,
-        username: "Asad"
+        name: "Asad",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your website."
     },
     {
         id : 15,
-        username: "Maneeha"
+        name: "Maneeha",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your website."
     },
     {
         id : 16,
-        username: "Hafsa"
+        name: "Hafsa",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your website."
     },
     {
         id : 17,
-        username: "Daud"
+        name: "Daud",
+        email: "abcd10@gmail.com",
+        suggestion: "If your target audience is very specific, it probably isn't an audience of millions. However, this can be an advantage for you: any content you create is likely to be highly relevant to those searching for your offering. This means you can clearly define your niche in a way that the big players can’t, become the expert in your area, and really pay attention to your specialised audience.Remember that online searches are most likely to include keywords related to your location or service, rather than your brand name. Work in language that relates to where your company is based and what you do, especially on the most viewed pages of your websitehhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh."
     }
 ]
 

@@ -7,7 +7,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { AgencyName } from "../mockdata";
 import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
 import SearchBar from "material-ui-search-bar";
 import { GET } from "../../../services/httpClient";
