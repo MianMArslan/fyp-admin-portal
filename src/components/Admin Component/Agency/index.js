@@ -9,12 +9,13 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
 import SearchBar from "material-ui-search-bar";
-import { GET } from "../../../services/httpClient";
+import { GET, DELETE } from "../../../services/httpClient";
 import ActivityLoader from "../../ActivityLoader/index";
 import CancelIcon from "@mui/icons-material/Cancel";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import Dialog from "../../Dialog/index";
 import TablePagination from "@mui/material/TablePagination";
+import Snackbar from "../../Snackbar/index";
 
 const AgencyDetail = () => {
   const [rows, setRows] = useState([]);
@@ -24,6 +25,10 @@ const AgencyDetail = () => {
   const [data, setData] = useState(null);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  const [type, setType] = React.useState(false);
+  const [snackbarMessage, setSnackbarMessage] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   useEffect(() => {
     getAllActiveUsers();
@@ -66,6 +71,20 @@ const AgencyDetail = () => {
   const handleUpdateClick = async (row) => {
     setData(row);
     setOpenDialog(true);
+  };
+
+  const handleDeleteClick = async (row) => {
+    let res = await DELETE("/admin/user", { params: { id: row.id } });
+    if (res?.code === 200) {
+      setType("success");
+      setOpenSnackbar(true);
+      setSnackbarMessage(res?.message);
+      getAllActiveUsers();
+    } else {
+      setType("error");
+      setOpenSnackbar(true);
+      setSnackbarMessage(res?.message);
+    }
   };
 
   return (
@@ -126,7 +145,11 @@ const AgencyDetail = () => {
                             >
                               <EditOutlined />
                             </button>
-                            <button className="deletebtn" title="Delete">
+                            <button
+                              className="deletebtn"
+                              title="Delete"
+                              onClick={() => handleDeleteClick(row)}
+                            >
                               <DeleteOutlined />
                             </button>
                           </TableCell>
@@ -150,6 +173,14 @@ const AgencyDetail = () => {
               setOpenDialog={setOpenDialog}
               getRecord={getAllActiveUsers}
               dialogData={data}
+            />
+          )}
+          {openSnackbar && (
+            <Snackbar
+              open={open}
+              setOpen={setOpen}
+              type={type}
+              message={snackbarMessage}
             />
           )}
         </div>

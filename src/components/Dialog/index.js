@@ -12,11 +12,10 @@ import PersonIcon from "@mui/icons-material/Person";
 
 export default function FormDialog(props) {
   const { dialogData, setOpenDialog, getRecord } = props;
-  console.log(dialogData);
   const [open, setOpen] = React.useState(true);
   const [firstName, setFirstName] = React.useState(dialogData.firstName);
   const [lastName, setLastName] = React.useState(dialogData.lastName);
-  const [email, setEmail] = React.useState(dialogData.email);
+  const [email] = React.useState(dialogData.email);
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const [type, setType] = React.useState(false);
   const [snackbarMessage, setSnackbarMessage] = React.useState(false);
@@ -28,25 +27,23 @@ export default function FormDialog(props) {
   };
 
   const handleSave = async () => {
-    // let res = await UPDATE("/agency", {
-    //   amount,
-    //   discount,
-    //   phone,
-    //   description,
-    //   id: dialogData.id,
-    // });
-    // if (res?.code === 200) {
-    //   setType("success");
-    //   setOpenSnackbar(true);
-    //   setSnackbarMessage(res?.message);
-    //   setTimeout(() => {
-    //     handleClose();
-    //   }, 1000);
-    // } else {
-    //   setType("error");
-    //   setOpenSnackbar(true);
-    //   setSnackbarMessage(res?.data.message);
-    // }
+    let res = await UPDATE("/admin/user", {
+      firstName,
+      lastName,
+      id: dialogData.id,
+    });
+    if (res?.code === 201) {
+      setType("success");
+      setOpenSnackbar(true);
+      setSnackbarMessage(res?.message);
+      setTimeout(() => {
+        handleClose();
+      }, 1000);
+    } else {
+      setType("error");
+      setOpenSnackbar(true);
+      setSnackbarMessage(res?.message);
+    }
   };
 
   return (
