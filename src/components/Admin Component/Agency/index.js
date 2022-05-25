@@ -14,6 +14,7 @@ import ActivityLoader from "../../ActivityLoader/index";
 import CancelIcon from "@mui/icons-material/Cancel";
 import VerifiedIcon from "@mui/icons-material/Verified";
 import Dialog from "../../Dialog/index";
+import TablePagination from "@mui/material/TablePagination";
 
 const AgencyDetail = () => {
   const [rows, setRows] = useState([]);
@@ -21,10 +22,22 @@ const AgencyDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [openDialog, setOpenDialog] = useState(false);
   const [data, setData] = useState(null);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   useEffect(() => {
     getAllActiveUsers();
   }, []);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
   async function getAllActiveUsers() {
     let res = await GET("/admin/agency", { params: { isDeleted: false } });
     if (res) {
@@ -65,54 +78,73 @@ const AgencyDetail = () => {
             onChange={(searchVal) => requestSearch(searchVal)}
             onCancelSearch={() => cancelSearch()}
           />
-
-          <TableContainer component={Paper} className="usertable">
-            {isLoading && <ActivityLoader />}
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>ID</TableCell>
-                  <TableCell>First Name</TableCell>
-                  <TableCell>Last Name</TableCell>
-                  <TableCell>Verify</TableCell>
-                  <TableCell>Action</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {!isLoading &&
-                  rows.map((row) => (
-                    <TableRow key={row.id}>
-                      <TableCell>{row.id}</TableCell>
-                      <TableCell className="tableCell">
-                        {row.firstName}
-                      </TableCell>
-                      <TableCell className="tableCell">
-                        {row.lastName}
-                      </TableCell>
-                      <TableCell className="tableCell">
-                        {row.isVerified === "email" ? (
-                          <VerifiedIcon sx={{ color: "#fb9e00" }} />
-                        ) : (
-                          <CancelIcon sx={{ color: "red" }} />
-                        )}
-                      </TableCell>
-                      <TableCell>
-                        <button
-                          className="editbtn"
-                          title="Edit"
-                          onClick={() => handleUpdateClick(row)}
-                        >
-                          <EditOutlined />
-                        </button>
-                        <button className="deletebtn" title="Delete">
-                          <DeleteOutlined />
-                        </button>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+          <Paper sx={{ width: "100%", overflow: "hidden" }}>
+            <TableContainer className="userTable">
+              {isLoading && <ActivityLoader />}
+              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>ID</TableCell>
+                    <TableCell>First Name</TableCell>
+                    <TableCell>Last Name</TableCell>
+                    <TableCell>Email</TableCell>
+                    <TableCell>Verify</TableCell>
+                    <TableCell>Action</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {!isLoading &&
+                    rows
+                      .slice(
+                        page * rowsPerPage,
+                        page * rowsPerPage + rowsPerPage
+                      )
+                      .map((row) => (
+                        <TableRow key={row.id}>
+                          <TableCell>{row.id}</TableCell>
+                          <TableCell className="tableCell">
+                            {row.firstName}
+                          </TableCell>
+                          <TableCell className="tableCell">
+                            {row.lastName}
+                          </TableCell>
+                          <TableCell className="tableCell">
+                            {row.email}
+                          </TableCell>
+                          <TableCell className="tableCell">
+                            {row.isVerified === "email" ? (
+                              <VerifiedIcon sx={{ color: "#fb9e00" }} />
+                            ) : (
+                              <CancelIcon sx={{ color: "red" }} />
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            <button
+                              className="editbtn"
+                              title="Edit"
+                              onClick={() => handleUpdateClick(row)}
+                            >
+                              <EditOutlined />
+                            </button>
+                            <button className="deletebtn" title="Delete">
+                              <DeleteOutlined />
+                            </button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <TablePagination
+              rowsPerPageOptions={[5]}
+              component="div"
+              count={rows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+          </Paper>
           {openDialog && (
             <Dialog
               setOpenDialog={setOpenDialog}

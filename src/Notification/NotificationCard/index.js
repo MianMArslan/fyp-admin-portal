@@ -32,7 +32,11 @@ export default function NotificationCard(props) {
             R
           </Avatar>
         }
-        title={`${data.message} ${data.user.firstName} ${data.user.lastName} as ${data.user.roles[0].title}`}
+        title={`${data.message} ${
+          data?.user?.firstName ? data?.user?.firstName : ""
+        } ${data?.user?.lastName ? data?.user?.lastName : ""} as ${
+          data?.user?.roles[0]?.title ? data?.user?.roles[0]?.title : ""
+        }`}
         subheader={tz(data.createdAt).format("MMM Do YY")}
       />
     </Card>
