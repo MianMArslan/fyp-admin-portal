@@ -6,6 +6,8 @@ import Applayout from "./components/Admin Component/sidebar/layout";
 import UserDetail from "./components/Admin Component/Users";
 import AgencyDetail from "./components/Admin Component/Agency";
 import Suggestion from "./components/Admin Component/Suggestion";
+import Location from "./components/Admin Component/location";
+
 
 
 function App() {
@@ -18,6 +20,7 @@ function App() {
           <Route path="/UserDetail"element = {<UserDetail />}></Route>
           <Route path="/AgencyDetail"element = {<AgencyDetail />}></Route>
           <Route path="/Suggestion"element = {<Suggestion />}></Route> 
+          <Route path="/Location"element = {<Location />}></Route> 
           </Route>
             </Routes>
     </Router>
