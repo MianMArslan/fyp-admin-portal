@@ -8,13 +8,20 @@ import TableRow from "@mui/material/TableRow";
 import SearchBar from "material-ui-search-bar";
 import Paper from "@mui/material/Paper";
 import TablePagination from "@mui/material/TablePagination";
-import {locationdetail} from "../mockdata"
+import ActivityLoader from "../../ActivityLoader/index";
+import { GET } from "../../../services/httpClient";
 import "./styles.css";
+
 function Location() {
-  const [rows, setRows] = useState(locationdetail);
+  const [rows, setRows] = useState();
   const [searched, setSearched] = useState("");
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getLocationLog();
+  }, []);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -25,13 +32,20 @@ function Location() {
     setPage(0);
   };
 
-
+  const getLocationLog = async () => {
+    let result = await GET("/admin/locationLog");
+    if (result) {
+      setRows(result);
+      setIsLoading(false);
+    }
+  };
   const requestSearch = (searchedVal) => {
+    if (!searchedVal) getLocationLog();
     const filteredRows = rows.filter((row) => {
       return Object.keys(row).some(
-        (name) =>
-          row.name.toLowerCase().includes(searchedVal) ||
-          row.name.toUpperCase().includes(searchedVal)
+        (firstName) =>
+          row.firstName.toLowerCase().includes(searchedVal) ||
+          row.firstName.toUpperCase().includes(searchedVal)
       );
     });
     setRows(filteredRows);
@@ -39,6 +53,7 @@ function Location() {
 
   const cancelSearch = () => {
     setSearched("");
+    getLocationLog();
   };
 
   return (
@@ -52,6 +67,7 @@ function Location() {
         />
         <Paper sx={{ width: "100%", overflow: "hidden" }}>
           <TableContainer sx={{ maxHeight: 500 }}>
+            {isLoading && <ActivityLoader />}
             <Table style={{ width: "900px" }} aria-label="simple table">
               <TableHead>
                 <TableRow>
@@ -77,50 +93,92 @@ function Location() {
                   </TableCell>
                   <TableCell
                     style={{
-                      width: "20%",
+                      width: "10%",
                       padding: "5px",
                       fontWeight: "bold",
                       fontSize: "16px",
                     }}
                   >
-                    Location
+                    latitude
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      width: "10%",
+                      padding: "5px",
+                      fontWeight: "bold",
+                      fontSize: "16px",
+                    }}
+                  >
+                    longitude
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      width: "10%",
+                      padding: "5px",
+                      fontWeight: "bold",
+                      fontSize: "16px",
+                    }}
+                  >
+                    ipAddress
                   </TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody>
-                {rows
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row) => (
-                    <TableRow key={row.id}>
-                      <TableCell style={{ width: "5%", padding: "15px" }}>
-                        {row.id}
-                      </TableCell>
-                      <TableCell style={{ width: "5%", padding: "15px" }}>
-                        {row.name}
-                      </TableCell>
-                      <TableCell
-                        style={{
-                          padding: "15px",
-                          wordWrap: "break-word",
-                          maxWidth: "500px",
-                        }}
-                      >
-                        {row.location}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-              </TableBody>
+              {!isLoading && (
+                <TableBody>
+                  {rows
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map((row) => (
+                      <TableRow key={row.id}>
+                        <TableCell style={{ width: "5%", padding: "15px" }}>
+                          {row.id}
+                        </TableCell>
+                        <TableCell style={{ width: "5%", padding: "15px" }}>
+                          {row?.user?.firstName} {row?.user?.lastName}
+                        </TableCell>
+                        <TableCell
+                          style={{
+                            padding: "15px",
+                            wordWrap: "break-word",
+                            maxWidth: "500px",
+                          }}
+                        >
+                          {row.lat}
+                        </TableCell>
+                        <TableCell
+                          style={{
+                            padding: "15px",
+                            wordWrap: "break-word",
+                            maxWidth: "500px",
+                          }}
+                        >
+                          {row.long}
+                        </TableCell>
+                        <TableCell
+                          style={{
+                            padding: "15px",
+                            wordWrap: "break-word",
+                            maxWidth: "500px",
+                          }}
+                        >
+                          {row.ipAddress}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                </TableBody>
+              )}
             </Table>
           </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[5]}
-            component="div"
-            count={rows.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
+          {!isLoading && (
+            <TablePagination
+              rowsPerPageOptions={[5]}
+              component="div"
+              count={rows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+          )}
         </Paper>
       </div>
     </>
