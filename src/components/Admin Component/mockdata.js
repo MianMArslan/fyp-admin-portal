@@ -1,82 +1,116 @@
-export const User = [
+export const locationdetail = [
     {
         id : 1,
-        username: "Manahil"
+        name: "Manahil",
+        email: "abcd10@gmail.com",
+        location: "Murree"
     },
     {
         id : 2,
-        username: "Adan"
+        name: "Adan",
+        email: "abcd10@gmail.com",
+        location: "Lahore"
     },
     {
         id : 3,
-        username: "Warda"
+        name: "Warda",
+        email: "abcd10@gmail.com",
+        location: "Sakhar"
     },
     {
         id : 4,
-        username: "Abdullah"
+        name: "Abdullah",
+        email: "abcd10@gmail.com",
+        location: "Vehari"
     },
     {
         id : 5,
-        username: "Zaid"
+        name: "Zaid",
+        email: "abcd10@gmail.com",
+        location: "Oman"
     },
     {
         id : 6,
-        username: "Zain"
+        name: "Zain",
+        email: "abcd10@gmail.com",
+        location: "Skardu"
     },
     {
         id : 7,
-        username: "Arhum"
+        name: "Arhum",
+        email: "abcd10@gmail.com",
+        location: "Okara"
     },
     {
         id : 8,
-        username: "Eshmal"
+        name: "Eshmal",
+        email: "abcd10@gmail.com",
+        location: "Sahiwal"
     },
     {
         id : 9,
-        username: "Ashmal"
+        name: "Ashmal",
+        email: "abcd10@gmail.com",
+        location: "Islamabad"
     },
     {
         id : 10,
-        username: "Areesh"
+        name: "Areesh",
+        email: "abcd10@gmail.com",
+        location: "Multan"
     },
     {
         id : 11,
-        username: "Zirwah"
+        name: "Zirwah",
+        email: "abcd10@gmail.com",
+        location: "Faisalbad"
     },
     {
         id : 12,
-        username: "Moosa"
+        name: "Moosa",
+        email: "abcd10@gmail.com",
+        location: "Rawalpindi"
     },
     {
         id : 13,
-        username: "Shoaib"
+        name: "Shoaib",
+        email: "abcd10@gmail.com",
+        location: "Karachi"
     },
     {
         id : 14,
-        username: "Asad"
+        name: "Asad",
+        email: "abcd10@gmail.com",
+        location: "Peshawar"
     },
     {
         id : 15,
-        username: "Maneeha"
+        name: "Maneeha",
+        email: "abcd10@gmail.com",
+        location: "Gujranwala"
     },
     {
         id : 16,
-        username: "Hafsa"
+        name: "Hafsa",
+        email: "abcd10@gmail.com",
+        location: "Quetta"
     },
     {
         id : 17,
-        username: "Daud"
+        name: "Daud",
+        email: "abcd10@gmail.com",
+        location: "Gujrat"
     }
 ]
 
-export const AgencyName = [
+export const Agencyname = [
     {
         id : 1,
         agencyname: "Placement pros"
     },
     {
         id : 2,
-        agencyname: "Oasis Travel"
+        agencyusername: "Oasis Travel"
     },
     {
         id : 3,

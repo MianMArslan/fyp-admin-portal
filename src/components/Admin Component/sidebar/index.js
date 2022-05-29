@@ -4,6 +4,8 @@ import './sidebar.css';
 import HomeIcon from '@mui/icons-material/Home';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates'
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 const sidebarNavItems = [
     {
         display: 'Home',
@@ -22,6 +24,18 @@ const sidebarNavItems = [
         icon: <ApartmentIcon />,
         to: '/AgencyDetail',
         section: 'AgencyDetail'
+    },
+    {
+        display: 'Suggestion',
+        icon: <TipsAndUpdatesIcon />,
+        to: '/Suggestion',
+        section: 'Suggestion'
+    },
+    {
+        display: 'Location',
+        icon: <LocationOnIcon />,
+        to: '/Location',
+        section: 'Location'
     },
 ]
 
