@@ -99,7 +99,7 @@ function Location() {
                       fontSize: "16px",
                     }}
                   >
-                    latitude
+                    Latitude
                   </TableCell>
                   <TableCell
                     style={{
@@ -109,7 +109,7 @@ function Location() {
                       fontSize: "16px",
                     }}
                   >
-                    longitude
+                    Longitude
                   </TableCell>
                   <TableCell
                     style={{
