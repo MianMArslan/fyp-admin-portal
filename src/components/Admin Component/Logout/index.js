@@ -18,12 +18,12 @@ export default function AlertDialogSlide(props) {
 
   const handleNo = () => {
     setOpen(false);
-    window.location.replace("http://localhost:3002/");
+    window.location.replace("https://admin.vtechserve.com/");
   };
   const handleYes = () => {
     setOpen(false);
     cookies.remove("accessToken");
-    window.location.replace("http://localhost:3000/");
+    window.location.replace("https://vtechserve.com/");
   };
   return (
     <div>

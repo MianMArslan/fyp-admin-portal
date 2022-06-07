@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const httpClient = axios.create({
-  baseURL: `http://localhost:4001/`,
+  baseURL: `https://vtechserve.com/api/`,
   headers: {
     "Content-Type": "application/json",
   },
@@ -9,7 +9,7 @@ const httpClient = axios.create({
 });
 
 const httpFileUpload = axios.create({
-  baseURL: `http://localhost:4001/`,
+  baseURL: `https://vtechserve.com/api/`,
   headers: {
     "content-type": "multipart/form-data",
   },
